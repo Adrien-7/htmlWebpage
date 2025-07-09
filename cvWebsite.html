@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adrien Darren Alassoo - CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f0f1a; /* Dark background inspired by screenshots */
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        .header-bg {
+            /* Updated: Changed from image to a subtle gradient background */
+            background: linear-gradient(135deg, #1a1a2e, #2c2c4a);
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .header-content {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+        .header-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #a855f7, #ec4899); /* Gradient text */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 1.5s infinite alternate;
+        }
+        .header-content p {
+            font-size: 1.5rem;
+            color: #d1d5db;
+            margin-top: 0.5rem;
+        }
+        .social-icons a {
+            color: #e0e0e0;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #a855f7;
+        }
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #a855f7;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #ec4899;
+            border-radius: 2px;
+        }
+        .card {
+            background-color: #1a1a2e;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+        }
+        .skill-badge {
+            background-color: #3f3f5a;
+            color: #d1d5db;
+            padding: 0.5rem 1rem;
+            border-radius: 0.75rem;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+        .skill-badge:hover {
+            background-color: #5a5a7a;
+        }
+        .project-card {
+            background-color: #1a1a2e;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+        }
+        .project-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #a855f7;
+            margin-bottom: 1rem;
+        }
+        .project-card p {
+            color: #d1d5db;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+        .project-card .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .tech-badge {
+            background-color: #3f3f5a;
+            color: #d1d5db;
+            padding: 0.3rem 0.8rem;
+            border-radius: 0.5rem;
+            font-size: 0.8rem;
+        }
+        .footer {
+            background-color: #1a1a2e;
+            padding: 2rem;
+            text-align: center;
+            color: #d1d5db;
+            border-top: 1px solid #3f3f5a;
+            margin-top: 4rem;
+            border-radius: 1rem 1rem 0 0;
+        }
+
+        /* Animation for header text */
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7; }
+            100% { text-shadow: 0 0 10px #ec4899, 0 0 20px #ec4899; }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2.5rem;
+            }
+            .header-content p {
+                font-size: 1.2rem;
+            }
+            .section-title {
+                font-size: 1.75rem;
+            }
+            .card {
+                padding: 1.5rem;
+            }
+            .project-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Particle animation for background */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle 10s infinite ease-in-out;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 0.8; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <header class="header-bg">
+        <div class="particles" id="particles-js"></div>
+        <div class="header-content">
+            <h1>Adrien Darren Alassoo</h1>
+            <p class="text-xl md:text-2xl">Enraptured about the ever-evolving world of technology. Always learning and looking for new challenges.</p>
+            <div class="social-icons mt-6 flex justify-center space-x-6">
+                <a href="mailto:darrenalassoo@gmail.com" class="text-3xl"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+23057583702" class="text-3xl"><i class="fas fa-phone"></i></a>
+                <a href="https://linkedin.com/in/Adrien-Alassoo" target="_blank" class="text-3xl"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Adrien-7" target="_blank" class="text-3xl"><i class="fab fa-github"></i></a>
+            </div>
+            <div class="mt-8">
+                <a href="#contact" class="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 px-8 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out">
+                    Contact Me
+                </a>
+                <a href="My Resume.pdf" download class="inline-block bg-gray-700 text-white py-3 px-8 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out ml-4">
+                    Download CV
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container py-12">
+        <!-- About Section -->
+        <section id="about" class="mb-16">
+            <h2 class="section-title">About Me</h2>
+            <div class="card p-8 text-center">
+                <p class="text-lg text-gray-300">
+                    I am a passionate and dedicated individual, always eager to explore the ever-evolving world of technology. My journey in IT is driven by a constant desire to learn new skills and tackle challenging problems. I am committed to delivering high-quality solutions and continuously improving my expertise in software development.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="mb-16">
+            <h2 class="section-title">Skills</h2>
+            <div class="card grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <span class="skill-badge">PHP</span>
+                <span class="skill-badge">MySQL</span>
+                <span class="skill-badge">C Language</span>
+                <span class="skill-badge">JAVA</span>
+                <span class="skill-badge">HTML5</span>
+                <span class="skill-badge">CSS</span>
+                <span class="skill-badge">BOOTSTRAP</span>
+                <span class="skill-badge">JAVASCRIPT</span>
+                <span class="skill-badge">PostGreSQL</span>
+                <span class="skill-badge">JavaServer Faces</span>
+                <span class="skill-badge">JavaServer Pages</span>
+                <span class="skill-badge">Asp.Net</span>
+                <span class="skill-badge">C# (C-Sharp)</span>
+                <span class="skill-badge">SpringBoot</span>
+                <span class="skill-badge">Docker images</span>
+                <span class="skill-badge">React.Js</span>
+                <span class="skill-badge">Next.js</span>
+                <span class="skill-badge">GCP</span>
+                <span class="skill-badge">Git</span>
+                <span class="skill-badge">Oracle SQL</span>
+                <span class="skill-badge">Problem Solving</span>
+                <span class="skill-badge">Linux CLI</span>
+                <span class="skill-badge">Project Management and Planning</span>
+                <span class="skill-badge">Power BI</span>
+                <span class="skill-badge">Research and Design</span>
+                <span class="skill-badge">Flask</span>
+                <span class="skill-badge">Python</span>
+                <span class="skill-badge">Microsoft Office Suite</span>
+                <span class="skill-badge">Google Suite</span>
+                <span class="skill-badge">Object Oriented Programming</span>
+                <span class="skill-badge">MSSQL</span>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="mb-16">
+            <h2 class="section-title">Education</h2>
+            <div class="card">
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-purple-400">Bsc (hons) Business Information Systems</h3>
+                    <p class="text-gray-400">University of Technology, Mauritius</p>
+                    <p class="text-sm text-gray-500">10/2021 - 09/2024</p>
+                    <p class="mt-2">Result: Second Class First Division with honours</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-purple-400">School Certificate and Higher School Certificate (SC and HSC)</h3>
+                    <p class="text-gray-400">John Kennedy Academy, Mauritius</p>
+                    <p class="text-sm text-gray-500">01/2014 - 05/2021</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section id="experience" class="mb-16">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="card">
+                <h3 class="text-xl font-semibold text-purple-400">Software Development Intern</h3>
+                <p class="text-gray-400">Leal Communications and Informatics (LCI) Ltd</p>
+                <p class="text-sm text-gray-500">08/2023 - 10/2023</p>
+                <ul class="list-disc list-inside mt-4 space-y-2 text-gray-300">
+                    <li>Creating user manuals.</li>
+                    <li>Maintenance of previous projects.</li>
+                    <li>Assisting in the development of Web Solutions for back-end and front-end (Java, PrimeFaces, and PostgreSQL).</li>
+                    <li>Testing of Web applications.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Personal Projects Section -->
+        <section id="projects" class="mb-16">
+            <h2 class="section-title">Personal Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="project-card">
+                    <h3>Job Portal - Create and Apply for Jobs via Posts on the platform</h3>
+                    <p class="text-sm text-gray-500">10/2022 - 01/2023</p>
+                    <p>Developed a job portal where users can create and apply for jobs. This project helped me self-learn MySQL and PHP, and deepen my understanding of HTML and CSS.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">MySQL</span>
+                        <span class="tech-badge">PHP</span>
+                        <span class="tech-badge">HTML</span>
+                        <span class="tech-badge">CSS</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Virtual Environment System - For Students and Tutors</h3>
+                    <p class="text-sm text-gray-500">11/2023 - 01/2024</p>
+                    <p>Created a web application for students and tutors using Asp.net and C#. This project was developed using Visual Studio 2022 Community Edition.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Asp.net</span>
+                        <span class="tech-badge">C#</span>
+                        <span class="tech-badge">Visual Studio</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Rental system for malls (back-end and front-end)</h3>
+                    <p class="text-sm text-gray-500">12/2023 - 09/2024</p>
+                    <p>Designed and implemented a fully responsive rental system for malls. This project involved deep diving into CSS, using C# language, Visual Studio, and Microsoft SQL Server, and self-learning object-oriented programming.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">C#</span>
+                        <span class="tech-badge">Visual Studio</span>
+                        <span class="tech-badge">Microsoft SQL Server</span>
+                        <span class="tech-badge">CSS</span>
+                        <span class="tech-badge">Bootstrap</span>
+                        <span class="tech-badge">OOP</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Languages Section -->
+        <section id="languages" class="mb-16">
+            <h2 class="section-title">Languages</h2>
+            <div class="card grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="text-xl font-semibold text-purple-400">English</h3>
+                    <p class="text-gray-400">Written and spoken: Full Professional Proficiency</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-purple-400">French</h3>
+                    <p class="text-gray-400">Written and spoken: Full Professional Proficiency</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Adrien Darren Alassoo. All rights reserved.</p>
+        <p class="mt-2">Built with <span class="text-red-500">&hearts;</span> and Tailwind CSS.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links (if a nav bar were added)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Particle animation
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            document.getElementById('particles-js').appendChild(particle);
+
+            const size = Math.random() * 3 + 1; // Size between 1px and 4px
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+
+            const duration = Math.random() * 8 + 5; // Duration between 5s and 13s
+            particle.style.animationDuration = `${duration}s`;
+            particle.style.animationDelay = `${Math.random() * 5}s`; // Random delay
+
+            // Remove particle after animation ends to prevent accumulation
+            particle.addEventListener('animationend', () => {
+                particle.remove();
+            });
+        }
+
+        // Generate particles periodically
+        setInterval(createParticle, 300); // Create a new particle every 300ms
+
+        // Initial particles
+        for (let i = 0; i < 50; i++) {
+            createParticle();
+        }
+    </script>
+</body>
+</html>
