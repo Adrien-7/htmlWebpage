@@ -1,405 +1,686 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adrien Darren Alassoo - CV</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adrien Alassoo - Portfolio</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0f0f1a; /* Dark background inspired by screenshots */
-            color: #e0e0e0;
-            line-height: 1.6;
-            overflow-x: hidden; /* Prevent horizontal scrolling */
+      /* Custom CSS for glowing name and other animations */
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
+
+      :root {
+        /* User-provided colors */
+        --champagne-pink: #e8d1c5ff;
+        --champagne-pink-2: #eddcd2ff;
+        --linen: #fff1e6ff;
+        --isabelline: #f0efebff;
+        --champagne-pink-3: #eeddd3ff;
+        --isabelline-2: #edede8ff;
+
+        /* Light theme colors based on user's palette */
+        --light-background: var(--linen); /* Main background */
+        --light-section-bg-alt: var(
+          --isabelline
+        ); /* Alternate section background */
+        --light-section-bg: var(
+          --isabelline-2
+        ); /* Default section background */
+        --text-dark: #333; /* Dark text for light backgrounds */
+        --dark-glow-color-1: #3a3a3a; /* Dark muted color for glow */
+        --dark-glow-color-2: #4a4a4a; /* Another dark muted color for glow */
+        --dark-glow-color-3: #5a5a5a; /* A third dark muted color for glow */
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(
+          --light-background
+        ); /* Overall light background */
+        color: var(--text-dark); /* Dark text for the body */
+        display: flex;
+        min-height: 100vh;
+        margin: 0;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+      }
+
+      /* Sidebar styles */
+      .sidebar {
+        width: 250px;
+        background-color: transparent; /* Transparent sidebar */
+        padding: 2rem 1rem;
+        position: fixed;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        z-index: 10;
+      }
+
+      .sidebar-nav a {
+        display: block;
+        padding: 0.75rem 1rem;
+        color: var(--text-dark); /* Dark text for links */
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease-in-out;
+        margin-bottom: 0.5rem;
+        background-color: transparent; /* Ensure link background is transparent by default */
+      }
+
+      .sidebar-nav a:hover {
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.05
+        ); /* Subtle hover background on light theme */
+        color: var(--champagne-pink); /* Hover color from your palette */
+        transform: translateX(5px);
+      }
+
+      .sidebar-nav a.active {
+        background-color: var(
+          --champagne-pink-3
+        ); /* Highlight active link with champagne-pink-3 */
+        color: #000; /* Darker text for active link for contrast */
+        font-weight: 700;
+        box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Main content area */
+      .main-content {
+        margin-left: 250px; /* Offset for the fixed sidebar */
+        flex-grow: 1;
+        padding: 2rem;
+        width: calc(100% - 250px); /* Adjust width for sidebar */
+      }
+
+      /* Section styling */
+      section {
+        padding: 4rem 2rem;
+        background-color: var(
+          --light-section-bg
+        ); /* Default light background for sections */
+        border-radius: 1rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Lighter shadow for light theme */
+        scroll-margin-top: 2rem; /* For smooth scrolling alignment */
+      }
+
+      section:nth-child(odd) {
+        background-color: var(
+          --light-section-bg-alt
+        ); /* Alternate light background */
+      }
+
+      /* Glowing name animation */
+      @keyframes glow {
+        0% {
+          text-shadow: 0 0 5px var(--dark-glow-color-1),
+            0 0 10px var(--dark-glow-color-2);
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem;
+        50% {
+          text-shadow: 0 0 10px var(--dark-glow-color-2),
+            0 0 20px var(--dark-glow-color-3);
         }
-        .header-bg {
-            /* Updated: Changed from image to a subtle gradient background */
-            background: linear-gradient(135deg, #1a1a2e, #2c2c4a);
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
+        100% {
+          text-shadow: 0 0 5px var(--dark-glow-color-1),
+            0 0 10px var(--dark-glow-color-2);
         }
-        .header-content {
-            text-align: center;
-            z-index: 10;
-            position: relative;
-        }
-        .header-content h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, #a855f7, #ec4899); /* Gradient text */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: glow 1.5s infinite alternate;
-        }
-        .header-content p {
-            font-size: 1.5rem;
-            color: #d1d5db;
-            margin-top: 0.5rem;
-        }
-        .social-icons a {
-            color: #e0e0e0;
-            transition: color 0.3s ease;
-        }
-        .social-icons a:hover {
-            color: #a855f7;
-        }
-        .section-title {
-            font-size: 2.25rem;
-            font-weight: 700;
-            color: #a855f7;
-            margin-bottom: 2rem;
-            text-align: center;
-            position: relative;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: #ec4899;
-            border-radius: 2px;
-        }
-        .card {
-            background-color: #1a1a2e;
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
-        }
-        .skill-badge {
-            background-color: #3f3f5a;
-            color: #d1d5db;
-            padding: 0.5rem 1rem;
-            border-radius: 0.75rem;
-            font-size: 0.9rem;
-            transition: background-color 0.3s ease;
-        }
-        .skill-badge:hover {
-            background-color: #5a5a7a;
-        }
-        .project-card {
-            background-color: #1a1a2e;
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
-        }
-        .project-card h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #a855f7;
-            margin-bottom: 1rem;
-        }
-        .project-card p {
-            color: #d1d5db;
-            margin-bottom: 1rem;
-            flex-grow: 1;
-        }
-        .project-card .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-        .tech-badge {
-            background-color: #3f3f5a;
-            color: #d1d5db;
-            padding: 0.3rem 0.8rem;
-            border-radius: 0.5rem;
-            font-size: 0.8rem;
-        }
-        .footer {
-            background-color: #1a1a2e;
-            padding: 2rem;
-            text-align: center;
-            color: #d1d5db;
-            border-top: 1px solid #3f3f5a;
-            margin-top: 4rem;
-            border-radius: 1rem 1rem 0 0;
+      }
+
+      .glowing-name {
+        animation: glow 3s infinite alternate;
+        display: inline-block; /* Essential for text-shadow to work correctly */
+        color: var(--text-dark); /* Base color of the glowing text is dark */
+      }
+
+      /* Hover and Click Animations */
+      .hover-effect {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+
+      .hover-effect:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Lighter shadow for light theme */
+      }
+
+      .click-effect:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease-out;
+      }
+
+      /* Hero section styling */
+      .hero-section {
+        background: linear-gradient(
+          135deg,
+          var(--light-background),
+          var(--champagne-pink-2)
+        ); /* Gradient background using light colors */
+        padding: 6rem 2rem;
+        text-align: center;
+        border-radius: 1rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+      }
+
+      .hero-section h1 {
+        font-size: 3.5rem; /* Larger font for name */
+        color: var(--text-dark); /* Name text is dark */
+        margin-bottom: 0.5rem;
+      }
+
+      .hero-section p {
+        font-size: 1.5rem;
+        color: var(--text-dark); /* Text is dark */
+        margin-bottom: 2rem;
+      }
+
+      .hero-icons a {
+        color: var(--text-dark); /* Icons are dark */
+        font-size: 1.8rem;
+        margin: 0 1rem;
+        transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+      }
+
+      .hero-icons a:hover {
+        color: var(--champagne-pink-3); /* Hover color from your palette */
+        transform: translateY(-3px);
+      }
+
+      .hero-buttons {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+      }
+
+      .hero-buttons .btn {
+        background-color: var(--champagne-pink-3);
+        color: #000; /* Button text is dark */
+        padding: 0.8rem 2rem;
+        border-radius: 0.75rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 0.3s ease-in-out, transform 0.2s ease-out,
+          box-shadow 0.3s ease-in-out;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+      }
+
+      .hero-buttons .btn:hover {
+        background-color: var(--champagne-pink-2);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Lighter shadow */
+      }
+
+      .hero-buttons .btn:active {
+        transform: scale(0.98);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .sidebar {
+          width: 100%;
+          height: auto;
+          position: relative;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Lighter shadow */
+          padding: 1rem;
+          flex-direction: row;
+          justify-content: center;
+          flex-wrap: wrap;
         }
 
-        /* Animation for header text */
-        @keyframes glow {
-            0% { text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7; }
-            100% { text-shadow: 0 0 10px #ec4899, 0 0 20px #ec4899; }
+        .sidebar-nav {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          width: 100%;
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .header-content h1 {
-                font-size: 2.5rem;
-            }
-            .header-content p {
-                font-size: 1.2rem;
-            }
-            .section-title {
-                font-size: 1.75rem;
-            }
-            .card {
-                padding: 1.5rem;
-            }
-            .project-card {
-                padding: 1.5rem;
-            }
+        .sidebar-nav a {
+          margin: 0.25rem;
+          padding: 0.5rem 0.75rem;
         }
 
-        /* Particle animation for background */
-        .particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-            pointer-events: none;
+        .main-content {
+          margin-left: 0;
+          width: 100%;
+          padding-top: 1rem; /* Adjust for new sidebar position */
         }
-        .particle {
-            position: absolute;
-            background-color: #fff;
-            border-radius: 50%;
-            opacity: 0;
-            animation: twinkle 10s infinite ease-in-out;
+
+        section {
+          padding: 2rem 1rem;
         }
-        @keyframes twinkle {
-            0%, 100% { opacity: 0; transform: scale(0.5); }
-            50% { opacity: 0.8; transform: scale(1); }
+
+        .hero-section h1 {
+          font-size: 2.5rem;
         }
+
+        .hero-section p {
+          font-size: 1.2rem;
+        }
+
+        .hero-icons a {
+          font-size: 1.5rem;
+          margin: 0 0.8rem;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+          gap: 1rem;
+        }
+      }
     </style>
-</head>
-<body>
-    <header class="header-bg">
-        <div class="particles" id="particles-js"></div>
-        <div class="header-content">
-            <h1>Adrien Darren Alassoo</h1>
-            <p class="text-xl md:text-2xl">Enraptured about the ever-evolving world of technology. Always learning and looking for new challenges.</p>
-            <div class="social-icons mt-6 flex justify-center space-x-6">
-                <a href="mailto:darrenalassoo@gmail.com" class="text-3xl"><i class="fas fa-envelope"></i></a>
-                <a href="tel:+23057583702" class="text-3xl"><i class="fas fa-phone"></i></a>
-                <a href="https://linkedin.com/in/Adrien-Alassoo" target="_blank" class="text-3xl"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/Adrien-7" target="_blank" class="text-3xl"><i class="fab fa-github"></i></a>
-            </div>
-            <div class="mt-8">
-                <a href="#contact" class="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 px-8 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out">
-                    Contact Me
-                </a>
-                <a href="adrienAlassooResume.pdf" download class="inline-block bg-gray-700 text-white py-3 px-8 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out ml-4">
-                    Download CV
-                </a>
-            </div>
+  </head>
+  <body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="mb-8 text-center w-full">
+        <!-- Name and title removed from sidebar as they are now in hero section -->
+      </div>
+      <nav class="sidebar-nav w-full">
+        <a href="#home" class="click-effect">Home</a>
+        <a href="#about" class="click-effect">About Me</a>
+        <a href="#experience" class="click-effect">Experience</a>
+        <a href="#education" class="click-effect">Education</a>
+        <a href="#skills" class="click-effect">Skills</a>
+        <a href="#contact" class="click-effect">Contact</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Hero Section - Inspired by the screenshot -->
+      <section id="home" class="hero-section">
+        <h1 class="font-bold glowing-name">Adrien Darren Alassoo</h1>
+        <p class="font-semibold">
+          Enraptured about the ever-evolving world of technology. Always
+          learning and looking for new challenges.
+        </p>
+
+        <div class="hero-icons mb-6">
+          <a
+            href="mailto:darrenalassoo@gmail.com"
+            target="_blank"
+            aria-label="Email"
+            ><i class="fas fa-envelope"></i
+          ></a>
+          <a href="tel:+23057583702" aria-label="Phone"
+            ><i class="fas fa-phone-alt"></i
+          ></a>
+          <a
+            href="https://linkedin.com/in/Adrien-Alassoo"
+            target="_blank"
+            aria-label="LinkedIn"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <a
+            href="https://github.com/Adrien-7"
+            target="_blank"
+            aria-label="GitHub"
+            ><i class="fab fa-github"></i
+          ></a>
         </div>
-    </header>
 
-    <main class="container py-12">
-        <!-- About Section -->
-        <section id="about" class="mb-16">
-            <h2 class="section-title">About Me</h2>
-            <div class="card p-8 text-center">
-                <p class="text-lg text-gray-300">
-                    I am a passionate and dedicated individual, always eager to explore the ever-evolving world of technology. My journey in IT is driven by a constant desire to learn new skills and tackle challenging problems. I am committed to delivering high-quality solutions and continuously improving my expertise in software development.
-                </p>
-            </div>
-        </section>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn click-effect">Contact Me</a>
+          <!-- Placeholder for CV Download - Replace with actual CV link -->
+          <a
+            href="CV-AdrienAlassoo.pdf"
+            download="CV-AdrienAlassoo.pdf"
+            class="btn click-effect"
+            >Download CV</a
+          >
+        </div>
+      </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="mb-16">
-            <h2 class="section-title">Skills</h2>
-            <div class="card grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <span class="skill-badge">PHP</span>
-                <span class="skill-badge">MySQL</span>
-                <span class="skill-badge">C Language</span>
-                <span class="skill-badge">JAVA</span>
-                <span class="skill-badge">HTML5</span>
-                <span class="skill-badge">CSS</span>
-                <span class="skill-badge">BOOTSTRAP</span>
-                <span class="skill-badge">JAVASCRIPT</span>
-                <span class="skill-badge">PostGreSQL</span>
-                <span class="skill-badge">JavaServer Faces</span>
-                <span class="skill-badge">JavaServer Pages</span>
-                <span class="skill-badge">Asp.Net</span>
-                <span class="skill-badge">C# (C-Sharp)</span>
-                <span class="skill-badge">SpringBoot</span>
-                <span class="skill-badge">Docker images</span>
-                <span class="skill-badge">React.Js</span>
-                <span class="skill-badge">Next.js</span>
-                <span class="skill-badge">GCP</span>
-                <span class="skill-badge">Git</span>
-                <span class="skill-badge">Oracle SQL</span>
-                <span class="skill-badge">Problem Solving</span>
-                <span class="skill-badge">Linux CLI</span>
-                <span class="skill-badge">Project Management and Planning</span>
-                <span class="skill-badge">Power BI</span>
-                <span class="skill-badge">Research and Design</span>
-                <span class="skill-badge">Flask</span>
-                <span class="skill-badge">Python</span>
-                <span class="skill-badge">Microsoft Office Suite</span>
-                <span class="skill-badge">Google Suite</span>
-                <span class="skill-badge">Object Oriented Programming</span>
-                <span class="skill-badge">MSSQL</span>
-            </div>
-        </section>
+      <!-- About Me Section -->
+      <section id="about">
+        <h2 class="text-4xl font-bold mb-6">About Me</h2>
+        <p class="text-lg leading-relaxed">
+          I am a passionate and dedicated individual, always eager to explore
+          the ever-evolving world of technology. My journey in IT is driven by a
+          constant desire to learn new skills and tackle challenging problems. I
+          am committed to delivering high-quality solutions and continuously
+          improving my expertise in software development.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4 text-gray-700">
+          <p>
+            <i class="fas fa-map-marker-alt mr-2 text-champagne-pink-3"></i>
+            Beau-Bassin, Mauritius
+          </p>
+          <p>
+            <a
+              href="http://adrien.it.com"
+              target="_blank"
+              class="hover:underline"
+              ><i class="fas fa-globe mr-2 text-champagne-pink-3"></i>
+              Website</a
+            >
+          </p>
+        </div>
+      </section>
 
-        <!-- Education Section -->
-        <section id="education" class="mb-16">
-            <h2 class="section-title">Education</h2>
-            <div class="card">
-                <div class="mb-6">
-                    <h3 class="text-xl font-semibold text-purple-400">Bsc (hons) Business Information Systems</h3>
-                    <p class="text-gray-400">University of Technology, Mauritius</p>
-                    <p class="text-sm text-gray-500">10/2021 - 09/2024</p>
-                    <p class="mt-2">Result: Second Class First Division with honours</p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold text-purple-400">School Certificate and Higher School Certificate (SC and HSC)</h3>
-                    <p class="text-gray-400">John Kennedy Academy, Mauritius</p>
-                    <p class="text-sm text-gray-500">01/2014 - 05/2021</p>
-                </div>
-            </div>
-        </section>
+      <!-- Professional Experience Section -->
+      <section id="experience">
+        <h2 class="text-4xl font-bold mb-8">Professional Experience</h2>
 
-        <!-- Work Experience Section -->
-        <section id="experience" class="mb-16">
-            <h2 class="section-title">Work Experience</h2>
-            <div class="card">
-                <h3 class="text-xl font-semibold text-purple-400">Software Development Intern</h3>
-                <p class="text-gray-400">Leal Communications and Informatics (LCI) Ltd</p>
-                <p class="text-sm text-gray-500">08/2023 - 10/2023</p>
-                <ul class="list-disc list-inside mt-4 space-y-2 text-gray-300">
-                    <li>Creating user manuals.</li>
-                    <li>Maintenance of previous projects.</li>
-                    <li>Assisting in the development of Web Solutions for back-end and front-end (Java, PrimeFaces, and PostgreSQL).</li>
-                    <li>Testing of Web applications.</li>
-                </ul>
-            </div>
-        </section>
+        <!-- Junior Software Developer -->
+        <div
+          class="bg-white p-6 rounded-xl shadow-md mb-6 hover-effect click-effect"
+        >
+          <h3 class="text-2xl font-semibold">Junior Software Developer</h3>
+          <p class="text-lg text-gray-700">
+            Providus Technologies Ltd |
+            <span class="font-medium">Nov 2024 - Present</span>
+          </p>
+          <ul class="list-disc list-inside mt-4 space-y-2 text-gray-700">
+            <li>
+              Worked on multiple projects, adapting to diverse development
+              methodologies.
+            </li>
+            <li>
+              Developed a company-wide leave management system with JAVA
+              SpringBoot backend, RESTful APIs, PostgreSQL, and ReactJS
+              frontend.
+            </li>
+            <li>
+              Participated in the development of a QA dashboard using JAVA
+              SpringBoot, PostgreSQL, and Next.js.
+            </li>
+            <li>
+              Deployed applications on GCP using CloudRun and Kubernetes
+              clusters.
+            </li>
+          </ul>
+        </div>
 
-        <!-- Personal Projects Section -->
-        <section id="projects" class="mb-16">
-            <h2 class="section-title">Personal Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="project-card">
-                    <h3>Job Portal - Create and Apply for Jobs via Posts on the platform</h3>
-                    <p class="text-sm text-gray-500">10/2022 - 01/2023</p>
-                    <p>Developed a job portal where users can create and apply for jobs. This project helped me self-learn MySQL and PHP, and deepen my understanding of HTML and CSS.</p>
-                    <div class="tech-stack">
-                        <span class="tech-badge">MySQL</span>
-                        <span class="tech-badge">PHP</span>
-                        <span class="tech-badge">HTML</span>
-                        <span class="tech-badge">CSS</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <h3>Virtual Environment System - For Students and Tutors</h3>
-                    <p class="text-sm text-gray-500">11/2023 - 01/2024</p>
-                    <p>Created a web application for students and tutors using Asp.net and C#. This project was developed using Visual Studio 2022 Community Edition.</p>
-                    <div class="tech-stack">
-                        <span class="tech-badge">Asp.net</span>
-                        <span class="tech-badge">C#</span>
-                        <span class="tech-badge">Visual Studio</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <h3>Rental system for malls (back-end and front-end)</h3>
-                    <p class="text-sm text-gray-500">12/2023 - 09/2024</p>
-                    <p>Designed and implemented a fully responsive rental system for malls. This project involved deep diving into CSS, using C# language, Visual Studio, and Microsoft SQL Server, and self-learning object-oriented programming.</p>
-                    <div class="tech-stack">
-                        <span class="tech-badge">C#</span>
-                        <span class="tech-badge">Visual Studio</span>
-                        <span class="tech-badge">Microsoft SQL Server</span>
-                        <span class="tech-badge">CSS</span>
-                        <span class="tech-badge">Bootstrap</span>
-                        <span class="tech-badge">OOP</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- Software Development Intern -->
+        <div
+          class="bg-white p-6 rounded-xl shadow-md hover-effect click-effect"
+        >
+          <h3 class="text-2xl font-semibold">Software Development Intern</h3>
+          <p class="text-lg text-gray-700">
+            Leal Communications and Informatics (LCI) Ltd |
+            <span class="font-medium">Aug 2023 - Oct 2023</span>
+          </p>
+          <ul class="list-disc list-inside mt-4 space-y-2 text-gray-700">
+            <li>
+              Assisted in developing web solutions for a full-stack app (JAVA
+              SpringBoot backend, PostgreSQL, PrimeFaces Framework).
+            </li>
+            <li>
+              Maintained previous projects, refining and refactoring code
+              following SpringBoot design principles.
+            </li>
+            <li>
+              Created User Manuals and performed web application testing
+              (whitebox, blackbox, edge case, smoke testing).
+            </li>
+          </ul>
+        </div>
+      </section>
 
-        <!-- Languages Section -->
-        <section id="languages" class="mb-16">
-            <h2 class="section-title">Languages</h2>
-            <div class="card grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <h3 class="text-xl font-semibold text-purple-400">English</h3>
-                    <p class="text-gray-400">Written and spoken: Full Professional Proficiency</p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold text-purple-400">French</h3>
-                    <p class="text-gray-400">Written and spoken: Full Professional Proficiency</p>
-                </div>
-            </div>
-        </section>
+      <!-- Education Section -->
+      <section id="education">
+        <h2 class="text-4xl font-bold mb-8">Education</h2>
+
+        <div
+          class="bg-white p-6 rounded-xl shadow-md mb-6 hover-effect click-effect"
+        >
+          <h3 class="text-2xl font-semibold">
+            BSc (Hons) Business Information System
+          </h3>
+          <p class="text-lg text-gray-700">
+            University of Technology, Mauritius |
+            <span class="font-medium">Oct 2021 - Oct 2024</span>
+          </p>
+          <p class="text-gray-600 mt-2">
+            Second Class, First Division with honours.
+          </p>
+        </div>
+
+        <div
+          class="bg-white p-6 rounded-xl shadow-md hover-effect click-effect"
+        >
+          <h3 class="text-2xl font-semibold">John Kennedy College</h3>
+          <p class="text-lg text-gray-700">
+            <span class="font-medium">2014 - 2021</span>
+          </p>
+          <p class="text-gray-600 mt-2">Pass at both SC and HSC level.</p>
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills">
+        <h2 class="text-4xl font-bold mb-8">Skills</h2>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+        >
+          <!-- Programming Languages -->
+          <div
+            class="bg-white p-5 rounded-xl shadow-md hover-effect click-effect"
+          >
+            <h3 class="text-xl font-semibold mb-3">Programming Languages</h3>
+            <ul class="list-disc list-inside space-y-1 text-gray-700">
+              <li>JAVA</li>
+              <li>Reactjs</li>
+              <li>JAVASCRIPT</li>
+              <li>TYPESCRIPT</li>
+              <li>HTML</li>
+              <li>CSS</li>
+            </ul>
+          </div>
+          <!-- Frameworks & Technologies -->
+          <div
+            class="bg-white p-5 rounded-xl shadow-md hover-effect click-effect"
+          >
+            <h3 class="text-xl font-semibold mb-3">
+              Frameworks & Technologies
+            </h3>
+            <ul class="list-disc list-inside space-y-1 text-gray-700">
+              <li>SpringBoot</li>
+              <li>NextJs</li>
+              <li>RESTful APIs</li>
+              <li>Containerization</li>
+              <li>Google Cloud Platforms</li>
+            </ul>
+          </div>
+          <!-- Databases -->
+          <div
+            class="bg-white p-5 rounded-xl shadow-md hover-effect click-effect"
+          >
+            <h3 class="text-xl font-semibold mb-3">Databases</h3>
+            <ul class="list-disc list-inside space-y-1 text-gray-700">
+              <li>PostgreSQL</li>
+              <li>MySQL</li>
+            </ul>
+          </div>
+          <!-- Methodologies & Tools -->
+          <div
+            class="bg-white p-5 rounded-xl shadow-md hover-effect click-effect"
+          >
+            <h3 class="text-xl font-semibold mb-3">Methodologies & Tools</h3>
+            <ul class="list-disc list-inside space-y-1 text-gray-700">
+              <li>Object Oriented Programming</li>
+              <li>Code Review</li>
+              <li>Coding Standards</li>
+              <li>GIT</li>
+              <li>Agile development</li>
+              <li>Maven dependency management</li>
+              <li>Software documentation</li>
+            </ul>
+          </div>
+          <!-- Office & Other -->
+          <div
+            class="bg-white p-5 rounded-xl shadow-md hover-effect click-effect"
+          >
+            <h3 class="text-xl font-semibold mb-3">Other Skills</h3>
+            <ul class="list-disc list-inside space-y-1 text-gray-700">
+              <li>Google Suite</li>
+              <li>Microsoft Office suite</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact">
+        <h2 class="text-4xl font-bold mb-8">Contact Me</h2>
+        <p class="text-lg leading-relaxed mb-6">
+          Feel free to reach out if you have any questions, opportunities, or
+          just want to connect!
+        </p>
+        <div class="flex flex-col space-y-4">
+          <p class="text-xl">
+            <i class="fas fa-envelope mr-3 text-champagne-pink-3"></i>
+            <a href="mailto:darrenalassoo@gmail.com" class="hover:underline"
+              >darrenalassoo@gmail.com</a
+            >
+          </p>
+          <p class="text-xl">
+            <i class="fas fa-phone-alt mr-3 text-champagne-pink-3"></i> +(230)
+            57583702
+          </p>
+          <p class="text-xl">
+            <i class="fab fa-linkedin mr-3 text-champagne-pink-3"></i>
+            <a
+              href="https://linkedin.com/in/Adrien-Alassoo"
+              target="_blank"
+              class="hover:underline"
+              >linkedin.com/in/Adrien-Alassoo</a
+            >
+          </p>
+          <p class="text-xl">
+            <i class="fab fa-github mr-3 text-champagne-pink-3"></i>
+            <a
+              href="https://github.com/Adrien-7"
+              target="_blank"
+              class="hover:underline"
+              >github.com/Adrien-7</a
+            >
+          </p>
+          <p class="text-xl">
+            <i class="fas fa-globe mr-3 text-champagne-pink-3"></i>
+            <a
+              href="http://adrien.it.com"
+              target="_blank"
+              class="hover:underline"
+              >adrien.it.com</a
+            >
+          </p>
+        </div>
+      </section>
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2025 Adrien Darren Alassoo. All rights reserved.</p>
-        <p class="mt-2">Built with <span class="text-red-500">&hearts;</span> and Tailwind CSS.</p>
-    </footer>
-
     <script>
-        // Smooth scrolling for navigation links (if a nav bar were added)
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+      document.addEventListener("DOMContentLoaded", () => {
+        const sidebarLinks = document.querySelectorAll(".sidebar-nav a");
+        const sections = document.querySelectorAll("section");
+
+        // Smooth scrolling for sidebar links
+        sidebarLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+              window.scrollTo({
+                top: targetSection.offsetTop - 20, // Adjust for a little padding
+                behavior: "smooth",
+              });
+            }
+          });
         });
 
-        // Particle animation
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            document.getElementById('particles-js').appendChild(particle);
+        // Intersection Observer for active sidebar link
+        const observerOptions = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.5, // Highlight when 50% of the section is visible
+        };
 
-            const size = Math.random() * 3 + 1; // Size between 1px and 4px
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            particle.style.left = `${Math.random() * 100}%`;
-            particle.style.top = `${Math.random() * 100}%`;
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            const id = entry.target.id;
+            const correspondingLink = document.querySelector(
+              `.sidebar-nav a[href="#${id}"]`
+            );
 
-            const duration = Math.random() * 8 + 5; // Duration between 5s and 13s
-            particle.style.animationDuration = `${duration}s`;
-            particle.style.animationDelay = `${Math.random() * 5}s`; // Random delay
+            if (correspondingLink) {
+              if (entry.isIntersecting) {
+                sidebarLinks.forEach((link) => link.classList.remove("active"));
+                correspondingLink.classList.add("active");
+              } else {
+                // Optional: Remove active class when section is out of view
+                // correspondingLink.classList.remove('active');
+              }
+            }
+          });
+        }, observerOptions);
 
-            // Remove particle after animation ends to prevent accumulation
-            particle.addEventListener('animationend', () => {
-                particle.remove();
-            });
-        }
+        sections.forEach((section) => {
+          observer.observe(section);
+        });
 
-        // Generate particles periodically
-        setInterval(createParticle, 300); // Create a new particle every 300ms
+        // Initial check for active section on page load
+        const initialCheck = () => {
+          let activeSectionFound = false;
+          for (let i = sections.length - 1; i >= 0; i--) {
+            const section = sections[i];
+            const rect = section.getBoundingClientRect();
+            // Check if the section is at least partially in view
+            if (
+              rect.top <= window.innerHeight / 2 &&
+              rect.bottom >= window.innerHeight / 2
+            ) {
+              sidebarLinks.forEach((link) => link.classList.remove("active"));
+              const correspondingLink = document.querySelector(
+                `.sidebar-nav a[href="#${section.id}"]`
+              );
+              if (correspondingLink) {
+                correspondingLink.classList.add("active");
+                activeSectionFound = true;
+                break;
+              }
+            }
+          }
+          // If no section is in view (e.g., at the very top before scrolling), activate the first link
+          if (!activeSectionFound && sections.length > 0) {
+            const firstLink = document.querySelector(
+              `.sidebar-nav a[href="#${sections[0].id}"]`
+            );
+            if (firstLink) {
+              firstLink.classList.add("active");
+            }
+          }
+        };
 
-        // Initial particles
-        for (let i = 0; i < 50; i++) {
-            createParticle();
-        }
+        // Run initial check and on scroll
+        initialCheck();
+        window.addEventListener("scroll", initialCheck);
+        window.addEventListener("resize", initialCheck); // Also check on resize
+
+        // Apply click effect
+        document.querySelectorAll(".click-effect").forEach((element) => {
+          element.addEventListener("click", function () {
+            this.classList.add("clicked");
+            setTimeout(() => {
+              this.classList.remove("clicked");
+            }, 200); // Remove class after 200ms
+          });
+        });
+      });
     </script>
-</body>
+  </body>
 </html>
+git config --global user.email "you@example.com" git config --global user.name
+"Your Name"
