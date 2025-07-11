@@ -17,32 +17,52 @@
 
       :root {
         /* User-provided colors */
-        --champagne-pink: #e8d1c5ff;
-        --champagne-pink-2: #eddcd2ff;
+        --magnolia: #eae4e9ff;
         --linen: #fff1e6ff;
+        --misty-rose: #fde2e4ff;
+        --mimi-pink: #fad2e1ff;
+        --mint-cream: #e2ece9ff;
+        --light-blue: #bee1e6ff;
         --isabelline: #f0efebff;
-        --champagne-pink-3: #eeddd3ff;
-        --isabelline-2: #edede8ff;
+        --lavender-web: #dfe7fdff;
+        --periwinkle: #cddafdff;
 
         /* Light theme colors based on user's palette */
-        --light-background: var(--linen); /* Main background */
-        --light-section-bg-alt: var(
+        --main-background: var(--linen); /* Main background, very light */
+        --section-background: var(
           --isabelline
-        ); /* Alternate section background */
-        --light-section-bg: var(
-          --isabelline-2
         ); /* Default section background */
+        --section-background-alt: var(
+          --magnolia
+        ); /* Alternate section background */
+        --accent-highlight: var(
+          --mimi-pink
+        ); /* Main accent for active states, buttons */
+        --hover-color: var(--misty-rose); /* Color for hover effects */
+        --icon-color: var(--mimi-pink); /* Color for icons */
         --text-dark: #333; /* Dark text for light backgrounds */
-        --dark-glow-color-1: #3a3a3a; /* Dark muted color for glow */
-        --dark-glow-color-2: #4a4a4a; /* Another dark muted color for glow */
-        --dark-glow-color-3: #5a5a5a; /* A third dark muted color for glow */
+        --dark-glow-color-1: #a3a3a3; /* Dark muted color for glow */
+        --dark-glow-color-2: #8d5f5f; /* Another dark muted color for glow */
+        --dark-glow-color-3: #5d3c5d; /* A third dark muted color for glow */
+
+        /* New pattern colors for IT effects - Increased visibility */
+        --pattern-color-light: rgba(
+          0,
+          0,
+          0,
+          0.25
+        ); /* Even more visible light pattern */
+        --pattern-color-medium: rgba(
+          0,
+          0,
+          0,
+          0.4
+        ); /* Even more visible medium pattern */
       }
 
       body {
         font-family: "Inter", sans-serif;
-        background-color: var(
-          --light-background
-        ); /* Overall light background */
+        background-color: var(--main-background); /* Overall light background */
         color: var(--text-dark); /* Dark text for the body */
         display: flex;
         min-height: 100vh;
@@ -80,19 +100,19 @@
           0,
           0,
           0,
-          0.05
-        ); /* Subtle hover background on light theme */
-        color: var(--champagne-pink); /* Hover color from your palette */
+          0.08
+        ); /* Subtle hover background on light theme, slightly more visible */
+        color: var(--text-dark); /* Hover color from your palette */
         transform: translateX(5px);
       }
 
       .sidebar-nav a.active {
         background-color: var(
-          --champagne-pink-3
-        ); /* Highlight active link with champagne-pink-3 */
+          --accent-highlight
+        ); /* Highlight active link with mimi-pink */
         color: #000; /* Darker text for active link for contrast */
         font-weight: 700;
-        box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
       }
 
       /* Main content area */
@@ -107,17 +127,19 @@
       section {
         padding: 4rem 2rem;
         background-color: var(
-          --light-section-bg
+          --section-background
         ); /* Default light background for sections */
         border-radius: 1rem;
         margin-bottom: 2rem;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Lighter shadow for light theme */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Lighter shadow for light theme, slightly stronger */
         scroll-margin-top: 2rem; /* For smooth scrolling alignment */
+        position: relative; /* Needed for pseudo-elements */
+        overflow: hidden; /* Hide overflowing background elements */
       }
 
       section:nth-child(odd) {
         background-color: var(
-          --light-section-bg-alt
+          --section-background-alt
         ); /* Alternate light background */
       }
 
@@ -138,7 +160,8 @@
       }
 
       .glowing-name {
-        animation: glow 3s infinite alternate;
+        font-size: 3em;
+        animation: glow 9s infinite alternate;
         display: inline-block; /* Essential for text-shadow to work correctly */
         color: var(--text-dark); /* Base color of the glowing text is dark */
       }
@@ -150,7 +173,7 @@
 
       .hover-effect:hover {
         transform: translateY(-5px) scale(1.02);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Lighter shadow for light theme */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Lighter shadow for light theme, slightly stronger */
       }
 
       .click-effect:active {
@@ -162,38 +185,139 @@
       .hero-section {
         background: linear-gradient(
           135deg,
-          var(--light-background),
-          var(--champagne-pink-2)
+          var(--main-background),
+          var(--light-blue)
         ); /* Gradient background using light colors */
         padding: 6rem 2rem;
         text-align: center;
         border-radius: 1rem;
         margin-bottom: 2rem;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Lighter shadow, slightly stronger */
+        position: relative; /* Needed for pseudo-elements */
+        overflow: hidden; /* Hide overflowing background elements */
       }
 
-      .hero-section h1 {
-        font-size: 3.5rem; /* Larger font for name */
-        color: var(--text-dark); /* Name text is dark */
-        margin-bottom: 0.5rem;
+      /* Hero section star background effect */
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+                /* Small, subtle "stars" as radial gradients, increased opacity */ radial-gradient(
+            2px 2px at 20% 30%,
+            var(--pattern-color-medium),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 40% 70%,
+            var(--pattern-color-light),
+            transparent
+          ),
+          radial-gradient(
+            1.5px 1.5px at 70% 10%,
+            var(--pattern-color-medium),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 90% 50%,
+            var(--pattern-color-light),
+            transparent
+          ),
+          /* Slightly larger, more spaced "stars", increased opacity */
+            radial-gradient(
+              3px 3px at 5% 90%,
+              var(--pattern-color-medium),
+              transparent
+            ),
+          radial-gradient(
+            2.5px 2.5px at 80% 20%,
+            var(--pattern-color-light),
+            transparent
+          ),
+          radial-gradient(
+            2px 2px at 10% 60%,
+            var(--pattern-color-medium),
+            transparent
+          );
+        background-size: 100% 100%; /* Cover the entire area */
+        animation: twinkle 8s infinite alternate; /* Slightly faster animation */
+        opacity: 1; /* Control opacity through rgba in gradients */
+        z-index: -1; /* Place behind content */
       }
 
-      .hero-section p {
-        font-size: 1.5rem;
-        color: var(--text-dark); /* Text is dark */
-        margin-bottom: 2rem;
+      @keyframes twinkle {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.02); /* Slightly more pronounced scale */
+        }
+        100% {
+          transform: scale(1);
+        }
       }
 
-      .hero-icons a {
-        color: var(--text-dark); /* Icons are dark */
-        font-size: 1.8rem;
-        margin: 0 1rem;
-        transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+      /* Abstract IT patterns for other sections */
+      section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 1; /* Control opacity through rgba in gradients */
+        background-size: 40px 40px; /* Increased size for more visibility */
+        animation: pattern-move 15s linear infinite; /* Even faster continuous movement */
       }
 
-      .hero-icons a:hover {
-        color: var(--champagne-pink-3); /* Hover color from your palette */
-        transform: translateY(-3px);
+      /* Animation for section patterns */
+      @keyframes pattern-move {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 40px 40px; /* Move by one pattern unit */
+        }
+      }
+
+      /* Abstract circuit board pattern for odd sections (About Me, Education, Contact), increased opacity */
+      section:nth-child(odd)::before {
+        background-image: repeating-linear-gradient(
+            45deg,
+            var(--pattern-color-medium) 0,
+            var(--pattern-color-medium) 2px,
+            /* Thicker lines */ transparent 2px,
+            transparent 20px /* Increased spacing for clarity */
+          ),
+          repeating-linear-gradient(
+            -45deg,
+            var(--pattern-color-medium) 0,
+            var(--pattern-color-medium) 2px,
+            /* Thicker lines */ transparent 2px,
+            transparent 20px
+          );
+      }
+
+      /* Abstract data flow pattern for even sections (Experience, Skills), increased opacity */
+      section:nth-child(even)::before {
+        background-image: repeating-linear-gradient(
+            90deg,
+            var(--pattern-color-light) 0,
+            var(--pattern-color-light) 2px,
+            /* Thicker lines */ transparent 2px,
+            transparent 15px /* Increased spacing for clarity */
+          ),
+          repeating-linear-gradient(
+            0deg,
+            var(--pattern-color-light) 0,
+            var(--pattern-color-light) 2px,
+            /* Thicker lines */ transparent 2px,
+            transparent 15px
+          );
       }
 
       .hero-buttons {
@@ -204,7 +328,9 @@
       }
 
       .hero-buttons .btn {
-        background-color: var(--champagne-pink-3);
+        background-color: var(
+          --accent-highlight
+        ); /* Button background from new palette */
         color: #000; /* Button text is dark */
         padding: 0.8rem 2rem;
         border-radius: 0.75rem;
@@ -216,7 +342,9 @@
       }
 
       .hero-buttons .btn:hover {
-        background-color: var(--champagne-pink-2);
+        background-color: var(
+          --hover-color
+        ); /* Button hover background from new palette */
         transform: translateY(-2px);
         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Lighter shadow */
       }
@@ -354,7 +482,10 @@
         </p>
         <div class="mt-8 flex flex-wrap gap-4 text-gray-700">
           <p>
-            <i class="fas fa-map-marker-alt mr-2 text-champagne-pink-3"></i>
+            <i
+              class="fas fa-map-marker-alt mr-2"
+              style="color: var(--icon-color)"
+            ></i>
             Beau-Bassin, Mauritius
           </p>
           <p>
@@ -362,7 +493,10 @@
               href="http://adrien.it.com"
               target="_blank"
               class="hover:underline"
-              ><i class="fas fa-globe mr-2 text-champagne-pink-3"></i>
+              ><i
+                class="fas fa-globe mr-2"
+                style="color: var(--icon-color)"
+              ></i>
               Website</a
             >
           </p>
@@ -541,17 +675,26 @@
         </p>
         <div class="flex flex-col space-y-4">
           <p class="text-xl">
-            <i class="fas fa-envelope mr-3 text-champagne-pink-3"></i>
+            <i
+              class="fas fa-envelope mr-3"
+              style="color: var(--icon-color)"
+            ></i>
             <a href="mailto:darrenalassoo@gmail.com" class="hover:underline"
-              >darrenalassoo@gmail.com</a
+              >darrenalassoo@gmail</a
             >
           </p>
           <p class="text-xl">
-            <i class="fas fa-phone-alt mr-3 text-champagne-pink-3"></i> +(230)
-            57583702
+            <i
+              class="fas fa-phone-alt mr-3"
+              style="color: var(--icon-color)"
+            ></i>
+            +(230) 57583702
           </p>
           <p class="text-xl">
-            <i class="fab fa-linkedin mr-3 text-champagne-pink-3"></i>
+            <i
+              class="fab fa-linkedin mr-3"
+              style="color: var(--icon-color)"
+            ></i>
             <a
               href="https://linkedin.com/in/Adrien-Alassoo"
               target="_blank"
@@ -560,7 +703,7 @@
             >
           </p>
           <p class="text-xl">
-            <i class="fab fa-github mr-3 text-champagne-pink-3"></i>
+            <i class="fab fa-github mr-3" style="color: var(--icon-color)"></i>
             <a
               href="https://github.com/Adrien-7"
               target="_blank"
@@ -569,7 +712,7 @@
             >
           </p>
           <p class="text-xl">
-            <i class="fas fa-globe mr-3 text-champagne-pink-3"></i>
+            <i class="fas fa-globe mr-3" style="color: var(--icon-color)"></i>
             <a
               href="http://adrien.it.com"
               target="_blank"
