@@ -3,201 +3,148 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Adrien Alassoo</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <title>Adrien Alassoo - Software Developer</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;700&family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <style>
-      /* Custom CSS for glowing name and other animations */
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
-
+      /* General Styles & Body */
       :root {
-        /* User-provided colors */
-        --magnolia: #eae4e9ff;
-        --linen: #fff1e6ff;
-        --misty-rose: #fde2e4ff;
-        --mimi-pink: #fad2e1ff;
-        --mint-cream: #e2ece9ff;
-        --light-blue: #bee1e6ff;
-        --isabelline: #f0efebff;
-        --lavender-web: #dfe7fdff;
-        --periwinkle: #cddafdff;
+        /* Dark Mode Colors (Tron/Cyberpunk inspired) */
+        --dark-bg: #0a0a0a; /* Very dark background */
+        --dark-text: #00eeff; /* Neon blue for primary text */
+        --dark-secondary-text: #9b59b6; /* Deep purple for secondary text/accents */
+        --dark-accent-glow: #00bfff; /* Brighter blue for interactive elements/glow */
+        --dark-border: #007bff; /* Tron-like blue for borders */
+        --dark-module-bg: #1a1a1a; /* Slightly lighter dark for module backgrounds */
+        --dark-module-pattern: rgba(
+          0,
+          238,
+          255,
+          0.03
+        ); /* Very subtle neon pattern */
+        --dark-hero-pattern-color: rgba(
+          0,
+          255,
+          255,
+          0.2
+        ); /* Increased opacity for hero grid lines */
 
-        /* Light theme colors based on user's palette */
-        --main-background: var(--linen); /* Main background, very light */
-        --section-background: var(
-          --isabelline
-        ); /* Default section background */
-        --section-background-alt: var(
-          --magnolia
-        ); /* Alternate section background */
-        --accent-highlight: var(
-          --mimi-pink
-        ); /* Main accent for active states, buttons */
-        --hover-color: var(--misty-rose); /* Color for hover effects */
-        --icon-color: var(--mimi-pink); /* Color for icons */
-        --text-dark: #333; /* Dark text for light backgrounds */
-        --dark-glow-color-1: #a3a3a3; /* Dark muted color for glow */
-        --dark-glow-color-2: #8d5f5f; /* Another dark muted color for glow */
-        --dark-glow-color-3: #5d3c5d; /* A third dark muted color for glow */
+        /* Light Mode Colors (Pink/Grey/White/Orange Theme) */
+        --light-bg: #f8f8f8; /* Light grey/off-white */
+        --light-text: #333333; /* Dark grey */
+        --light-secondary-text: #888888; /* Softer grey */
+        --light-accent-glow: #ff6b6b; /* Vibrant pink */
+        --light-border: #dddddd; /* Light grey */
+        --light-module-bg: #ffffff; /* White */
+        --light-module-pattern: rgba(
+          255,
+          107,
+          107,
+          0.03
+        ); /* Very subtle pink pattern */
+        --light-hero-pattern-color: rgba(
+          255,
+          107,
+          107,
+          0.2
+        ); /* Increased opacity for hero grid lines */
 
-        /* New pattern colors for IT effects - Increased visibility */
-        --pattern-color-light: rgba(
-          0,
-          0,
-          0,
-          0.25
-        ); /* Even more visible light pattern */
-        --pattern-color-medium: rgba(
-          0,
-          0,
-          0,
-          0.4
-        ); /* Even more visible medium pattern */
+        /* Universal Styles */
+        --transition-speed: 0.3s ease-in-out;
+        --border-radius: 8px;
+        --glow-strength: 0 0 15px var(--dark-accent-glow);
+        --glow-strength-hover: 0 0 25px var(--dark-accent-glow); /* More intense glow on hover */
+        --light-shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow for light mode hover */
+        --light-glow-strength: 0 0 15px var(--light-accent-glow); /* Pink glow for light mode */
+        --light-glow-strength-hover: 0 0 25px var(--light-accent-glow); /* More intense pink glow on hover */
       }
 
       body {
-        font-family: "Inter", sans-serif;
-        background-color: var(--main-background); /* Overall light background */
-        color: var(--text-dark); /* Dark text for the body */
-        display: flex;
-        min-height: 100vh;
+        font-family: "Share Tech Mono", monospace; /* Futuristic monospaced font for body */
         margin: 0;
-        overflow-x: hidden; /* Prevent horizontal scrolling */
+        padding: 0;
+        line-height: 1.6;
+        transition: background-color var(--transition-speed),
+          color var(--transition-speed);
       }
 
-      /* Sidebar styles */
-      .sidebar {
-        width: 250px;
-        background-color: transparent; /* Transparent sidebar */
-        padding: 2rem 1rem;
-        position: fixed;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        z-index: 10;
+      /* Dark Mode Defaults */
+      body.dark-mode {
+        background-color: var(--dark-bg);
+        color: var(--dark-text);
       }
 
-      .sidebar-nav a {
-        display: block;
-        padding: 0.75rem 1rem;
-        color: var(--text-dark); /* Dark text for links */
-        font-weight: 600;
+      body.dark-mode h1,
+      body.dark-mode h2 {
+        color: var(--dark-accent-glow);
+        text-shadow: var(--glow-strength);
+      }
+
+      /* Light Mode Overrides */
+      body.light-mode {
+        background-color: var(--light-bg);
+        color: var(--light-text);
+      }
+
+      body.light-mode h1,
+      body.light-mode h2 {
+        color: var(
+          --light-accent-glow
+        ); /* Changed to accent glow for headings in light mode */
+        text-shadow: var(
+          --light-glow-strength
+        ); /* Apply pink glow in light mode */
+      }
+
+      a {
+        color: var(--dark-accent-glow);
         text-decoration: none;
-        border-radius: 0.5rem;
-        transition: all 0.3s ease-in-out;
-        margin-bottom: 0.5rem;
-        background-color: transparent; /* Ensure link background is transparent by default */
+        transition: color var(--transition-speed), transform 0.2s ease; /* Added transform for animation */
       }
 
-      .sidebar-nav a:hover {
-        background-color: rgba(
-          0,
-          0,
-          0,
-          0.08
-        ); /* Subtle hover background on light theme, slightly more visible */
-        color: var(--text-dark); /* Hover color from your palette */
-        transform: translateX(5px);
+      body.light-mode a {
+        color: var(--light-accent-glow);
       }
 
-      .sidebar-nav a.active {
-        background-color: var(
-          --accent-highlight
-        ); /* Highlight active link with mimi-pink */
-        color: #000; /* Darker text for active link for contrast */
-        font-weight: 700;
-        box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
+      a:hover {
+        text-decoration: underline;
+        opacity: 0.8;
+        transform: translateY(-3px) scale(1.02); /* Small upward and enlarge on hover */
       }
 
-      /* Main content area */
-      .main-content {
-        margin-left: 250px; /* Offset for the fixed sidebar */
-        flex-grow: 1;
-        padding: 2rem;
-        width: calc(100% - 250px); /* Adjust width for sidebar */
+      /* Container for content */
+      .container {
+        max-width: 960px;
+        margin: 20px auto;
+        padding: 0 20px;
       }
 
-      /* Section styling */
-      section {
-        padding: 4rem 2rem;
-        background-color: var(
-          --section-background
-        ); /* Default light background for sections */
-        border-radius: 1rem;
-        margin-bottom: 2rem;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Lighter shadow for light theme, slightly stronger */
-        scroll-margin-top: 2rem; /* For smooth scrolling alignment */
-        position: relative; /* Needed for pseudo-elements */
-        overflow: hidden; /* Hide overflowing background elements */
-      }
-
-      section:nth-child(odd) {
-        background-color: var(
-          --section-background-alt
-        ); /* Alternate light background */
-      }
-
-      /* Glowing name animation */
-      @keyframes glow {
-        0% {
-          text-shadow: 0 0 5px var(--dark-glow-color-1),
-            0 0 10px var(--dark-glow-color-2);
-        }
-        50% {
-          text-shadow: 0 0 10px var(--dark-glow-color-2),
-            0 0 20px var(--dark-glow-color-3);
-        }
-        100% {
-          text-shadow: 0 0 5px var(--dark-glow-color-1),
-            0 0 10px var(--dark-glow-color-2);
-        }
-      }
-
-      .glowing-name {
-        font-size: 3em;
-        animation: glow 9s infinite alternate;
-        display: inline-block; /* Essential for text-shadow to work correctly */
-        color: var(--text-dark); /* Base color of the glowing text is dark */
-      }
-
-      /* Hover and Click Animations */
-      .hover-effect {
-        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-      }
-
-      .hover-effect:hover {
-        transform: translateY(-5px) scale(1.02);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Lighter shadow for light theme, slightly stronger */
-      }
-
-      .click-effect:active {
-        transform: scale(0.98);
-        transition: transform 0.1s ease-out;
-      }
-
-      /* Hero section styling */
+      /* Hero Section */
       .hero-section {
-        background: linear-gradient(
-          135deg,
-          var(--main-background),
-          var(--light-blue)
-        ); /* Gradient background using light colors */
-        padding: 6rem 2rem;
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://source.unsplash.com/random/1600x600/?futuristic-city,neon-lights,cyberpunk")
+            no-repeat center center/cover;
+        height: 400px; /* Default height for desktop */
+        display: flex;
+        justify-content: center;
+        align-items: center;
         text-align: center;
-        border-radius: 1rem;
-        margin-bottom: 2rem;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Lighter shadow, slightly stronger */
-        position: relative; /* Needed for pseudo-elements */
-        overflow: hidden; /* Hide overflowing background elements */
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+        /* Subtle animation for hero background */
+        animation: heroBackgroundPan 60s linear infinite alternate;
       }
 
-      /* Hero section star background effect */
+      /* Hero section overlay for Tron/Cyberpunk grid */
       .hero-section::before {
         content: "";
         position: absolute;
@@ -205,406 +152,646 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-image:
-                /* Small, subtle "stars" as radial gradients, increased opacity */ radial-gradient(
-            2px 2px at 20% 30%,
-            var(--pattern-color-medium),
-            transparent
-          ),
-          radial-gradient(
-            1px 1px at 40% 70%,
-            var(--pattern-color-light),
-            transparent
-          ),
-          radial-gradient(
-            1.5px 1.5px at 70% 10%,
-            var(--pattern-color-medium),
-            transparent
-          ),
-          radial-gradient(
-            1px 1px at 90% 50%,
-            var(--pattern-color-light),
-            transparent
-          ),
-          /* Slightly larger, more spaced "stars", increased opacity */
-            radial-gradient(
-              3px 3px at 5% 90%,
-              var(--pattern-color-medium),
-              transparent
-            ),
-          radial-gradient(
-            2.5px 2.5px at 80% 20%,
-            var(--pattern-color-light),
-            transparent
-          ),
-          radial-gradient(
-            2px 2px at 10% 60%,
-            var(--pattern-color-medium),
-            transparent
-          );
-        background-size: 100% 100%; /* Cover the entire area */
-        animation: twinkle 8s infinite alternate; /* Slightly faster animation */
-        opacity: 1; /* Control opacity through rgba in gradients */
-        z-index: -1; /* Place behind content */
+        /* Tron-like horizontal lines */
+        background-image: repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 18px,
+          /* Adjusted for slightly thicker lines */
+            var(--dark-hero-pattern-color) 18px,
+          var(--dark-hero-pattern-color) 20px
+        );
+        background-size: 100% 20px; /* Full width, 20px height for each repeating unit */
+        opacity: 1; /* Increased opacity to make it more pronounced */
+        z-index: 0;
+        animation: tronGridScroll 15s linear infinite; /* Slower animation: 15s */
+        transition: background-image var(--transition-speed);
       }
 
-      @keyframes twinkle {
+      body.light-mode .hero-section::before {
+        background-image: repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 18px,
+          var(--light-hero-pattern-color) 18px,
+          var(--light-hero-pattern-color) 20px
+        );
+      }
+
+      @keyframes heroBackgroundPan {
         0% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.02); /* Slightly more pronounced scale */
+          background-position: 0% 0%;
         }
         100% {
-          transform: scale(1);
+          background-position: 100% 100%;
         }
       }
 
-      /* Abstract IT patterns for other sections */
-      section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        opacity: 1; /* Control opacity through rgba in gradients */
-        background-size: 40px 40px; /* Increased size for more visibility */
-        animation: pattern-move 15s linear infinite; /* Even faster continuous movement */
+      @keyframes tronGridScroll {
+        from {
+          background-position-y: 0;
+        }
+        to {
+          background-position-y: 400px;
+        } /* Scroll down the height of the hero section */
       }
 
-      /* Animation for section patterns */
-      @keyframes pattern-move {
+      .hero-content {
+        z-index: 1;
+        position: relative;
+        animation: fadeIn 2s ease-out;
+        display: flex; /* Use flexbox for button alignment */
+        flex-direction: column; /* Stack content vertically */
+        align-items: center; /* Center horizontally */
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 15px; /* Space between buttons */
+        margin-top: 20px;
+        flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+        justify-content: center;
+      }
+
+      .hero-section h1 {
+        font-family: "Oxanium", cursive; /* More impactful font for name */
+        font-size: 3.5em;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        animation: neonGlow 1.5s ease-in-out infinite alternate;
+      }
+
+      .hero-section .one-liner {
+        font-size: 1.2em;
+        color: #00eeff; /* Neon blue for the one-liner */
+        animation: slideInFromLeft 1.5s ease-out;
+      }
+
+      /* Theme Toggle Button and other Hero Buttons */
+      .theme-toggle-button {
+        background-color: var(--dark-border);
+        color: #fff;
+        border: 2px solid var(--dark-accent-glow);
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: "Share Tech Mono", monospace;
+        font-size: 1em;
+        transition: background-color 0.3s ease, border-color 0.3s ease,
+          color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease; /* Added transform for animation */
+        box-shadow: var(--glow-strength);
+        text-decoration: none; /* Ensure links look like buttons */
+        display: inline-block; /* Allow padding and margin */
+      }
+
+      body.light-mode .theme-toggle-button {
+        background-color: var(--light-accent-glow);
+        border-color: var(
+          --light-accent-glow
+        ); /* Changed border to match accent */
+        color: #fff;
+        box-shadow: var(
+          --light-glow-strength
+        ); /* Apply pink glow in light mode */
+      }
+
+      .theme-toggle-button:hover,
+      .theme-toggle-button:active {
+        /* Added :active for click effect */
+        background-color: var(--dark-accent-glow);
+        box-shadow: var(--glow-strength-hover); /* More intense glow on hover */
+        transform: translateY(-3px) scale(1.02); /* Small upward and enlarge on hover/click */
+      }
+
+      body.light-mode .theme-toggle-button:hover,
+      body.light-mode .theme-toggle-button:active {
+        /* Added :active for click effect */
+        background-color: #e05a5a; /* Slightly darker pink for hover */
+        box-shadow: var(
+          --light-glow-strength-hover
+        ); /* More intense pink glow on hover */
+      }
+
+      /* General Module Styles */
+      .module {
+        background-color: var(--dark-module-bg);
+        border: 1px solid var(--dark-border);
+        border-radius: var(--border-radius);
+        padding: 30px;
+        margin-bottom: 25px;
+        box-shadow: var(--glow-strength);
+        transition: background-color var(--transition-speed),
+          border-color var(--transition-speed),
+          box-shadow var(--transition-speed);
+        /* Subtle grid pattern background */
+        background-image: repeating-linear-gradient(
+            45deg,
+            var(--dark-module-pattern) 0px,
+            var(--dark-module-pattern) 2px,
+            transparent 2px,
+            transparent 10px
+          ),
+          repeating-linear-gradient(
+            -45deg,
+            var(--dark-module-pattern) 0px,
+            var(--dark-module-pattern) 2px,
+            transparent 2px,
+            transparent 10px
+          );
+        background-size: 20px 20px;
+        animation: backgroundPan 10s linear infinite;
+      }
+
+      body.light-mode .module {
+        background-color: var(--light-module-bg);
+        border-color: var(--light-border);
+        box-shadow: var(
+          --light-glow-strength
+        ); /* Apply pink glow in light mode */
+        background-image: repeating-linear-gradient(
+            45deg,
+            var(--light-module-pattern) 0px,
+            var(--light-module-pattern) 2px,
+            transparent 2px,
+            transparent 10px
+          ),
+          repeating-linear-gradient(
+            -45deg,
+            var(--light-module-pattern) 0px,
+            var(--light-module-pattern) 2px,
+            transparent 2px,
+            transparent 10px
+          );
+      }
+
+      @keyframes backgroundPan {
         0% {
           background-position: 0 0;
         }
         100% {
-          background-position: 40px 40px; /* Move by one pattern unit */
+          background-position: 20px 20px;
         }
       }
 
-      /* Abstract circuit board pattern for odd sections (About Me, Education, Contact), increased opacity */
-      section:nth-child(odd)::before {
-        background-image: repeating-linear-gradient(
-            45deg,
-            var(--pattern-color-medium) 0,
-            var(--pattern-color-medium) 2px,
-            /* Thicker lines */ transparent 2px,
-            transparent 20px /* Increased spacing for clarity */
-          ),
-          repeating-linear-gradient(
-            -45deg,
-            var(--pattern-color-medium) 0,
-            var(--pattern-color-medium) 2px,
-            /* Thicker lines */ transparent 2px,
-            transparent 20px
-          );
+      .module h2 {
+        font-family: "Oxanium", cursive;
+        font-size: 2em;
+        margin-top: 0;
+        margin-bottom: 20px;
+        border-bottom: 2px solid var(--dark-secondary-text);
+        padding-bottom: 10px;
+        transition: color var(--transition-speed),
+          border-color var(--transition-speed),
+          text-shadow var(--transition-speed);
       }
 
-      /* Abstract data flow pattern for even sections (Experience, Skills), increased opacity */
-      section:nth-child(even)::before {
-        background-image: repeating-linear-gradient(
-            90deg,
-            var(--pattern-color-light) 0,
-            var(--pattern-color-light) 2px,
-            /* Thicker lines */ transparent 2px,
-            transparent 15px /* Increased spacing for clarity */
-          ),
-          repeating-linear-gradient(
-            0deg,
-            var(--pattern-color-light) 0,
-            var(--pattern-color-light) 2px,
-            /* Thicker lines */ transparent 2px,
-            transparent 15px
-          );
+      body.light-mode .module h2 {
+        border-bottom-color: var(--light-border);
       }
 
-      .hero-buttons {
-        margin-top: 2rem;
-        display: flex;
-        justify-content: center;
-        gap: 1.5rem;
+      /* Professional Experience Section */
+      .job-entry {
+        margin-bottom: 20px;
+        padding: 25px; /* Adjusted padding for the glow effect */
+        border: 1px solid var(--dark-border); /* Added border for consistency with glow */
+        border-radius: var(--border-radius); /* Added border-radius */
+        box-shadow: var(--glow-strength); /* Glow in normal state */
+        transition: transform 0.2s ease, box-shadow 0.2s ease,
+          border-color var(--transition-speed);
+      }
+      body.light-mode .job-entry {
+        border-color: var(--light-border);
+        box-shadow: var(--light-glow-strength); /* Light mode initial glow */
+      }
+      .job-entry:last-child {
+        border-bottom: 1px dashed var(--dark-secondary-text); /* Keep dashed border for consistency */
+        padding-bottom: 15px; /* Re-add original padding for last child */
+      }
+      body.light-mode .job-entry:last-child {
+        border-bottom: 1px dashed var(--light-secondary-text);
+      }
+      .job-entry:hover {
+        transform: translateY(-5px) scale(1.01); /* Small upward and enlarge on hover */
+        box-shadow: var(--glow-strength-hover); /* More intense glow on hover */
+      }
+      body.light-mode .job-entry:hover {
+        box-shadow: var(
+          --light-glow-strength-hover
+        ); /* Stronger pink glow for light mode hover */
       }
 
-      .hero-buttons .btn {
-        background-color: var(
-          --accent-highlight
-        ); /* Button background from new palette */
-        color: #000; /* Button text is dark */
-        padding: 0.8rem 2rem;
-        border-radius: 0.75rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: background-color 0.3s ease-in-out, transform 0.2s ease-out,
-          box-shadow 0.3s ease-in-out;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+      .job-entry h3 {
+        font-family: "Oxanium", cursive;
+        font-size: 1.5em;
+        margin-top: 0;
+        margin-bottom: 5px;
+        color: var(--dark-accent-glow);
+        text-shadow: 0 0 8px var(--dark-accent-glow);
+      }
+      body.light-mode .job-entry h3 {
+        color: var(
+          --light-accent-glow
+        ); /* Changed to accent glow for headings in light mode */
+        text-shadow: none;
+      }
+      .company-name {
+        font-size: 0.8em;
+        color: var(--dark-secondary-text);
+        margin-left: 10px;
+      }
+      body.light-mode .company-name {
+        color: var(--light-secondary-text);
+      }
+      .job-duration {
+        font-size: 0.9em;
+        color: var(--dark-text);
+        margin-bottom: 10px;
+      }
+      body.light-mode .job-duration {
+        color: var(--light-text);
+      }
+      .job-entry ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .job-entry ul li {
+        margin-bottom: 5px;
+        padding-left: 15px;
+        position: relative;
+      }
+      .job-entry ul li::before {
+        content: "»"; /* Futuristic arrow bullet */
+        color: var(--dark-accent-glow);
+        font-size: 1.2em;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      body.light-mode .job-entry ul li::before {
+        color: var(--light-accent-glow);
       }
 
-      .hero-buttons .btn:hover {
-        background-color: var(
-          --hover-color
-        ); /* Button hover background from new palette */
-        transform: translateY(-2px);
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Lighter shadow */
+      /* Skills Section */
+      .skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
       }
 
-      .hero-buttons .btn:active {
-        transform: scale(0.98);
+      .skill-category {
+        background-color: var(--dark-module-bg);
+        border: 1px solid var(--dark-border);
+        border-radius: var(--border-radius);
+        padding: 20px;
+        box-shadow: var(--glow-strength);
+        transition: background-color var(--transition-speed),
+          border-color var(--transition-speed),
+          box-shadow var(--transition-speed), transform 0.2s ease; /* Added transform for animation */
+        /* Inherits subtle grid pattern from .module */
       }
 
-      /* Responsive adjustments */
+      body.light-mode .skill-category {
+        background-color: var(--light-module-bg);
+        border-color: var(--light-border);
+        box-shadow: var(--light-glow-strength); /* Light mode initial glow */
+      }
+      .skill-category:hover {
+        transform: translateY(-3px) scale(1.01); /* Small upward and enlarge on hover */
+        box-shadow: var(--glow-strength); /* Add glow on hover */
+      }
+      body.light-mode .skill-category:hover {
+        box-shadow: var(
+          --light-glow-strength-hover
+        ); /* Stronger pink glow for light mode hover */
+      }
+
+      .skill-category h3 {
+        font-family: "Oxanium", cursive;
+        font-size: 1.4em;
+        margin-top: 0;
+        margin-bottom: 15px;
+        color: var(--dark-accent-glow);
+        text-shadow: 0 0 10px var(--dark-accent-glow);
+        transition: color var(--transition-speed),
+          text-shadow var(--transition-speed);
+      }
+
+      body.light-mode .skill-category h3 {
+        color: var(
+          --light-accent-glow
+        ); /* Changed to accent glow for headings in light mode */
+        text-shadow: none;
+      }
+
+      .skill-category ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .skill-category ul li {
+        margin-bottom: 8px;
+        padding-left: 15px;
+        position: relative;
+        color: var(--dark-text);
+        transition: color var(--transition-speed);
+      }
+
+      body.light-mode .skill-category ul li {
+        color: var(--light-text);
+      }
+
+      .skill-category ul li::before {
+        content: "•"; /* Bullet point */
+        color: var(--dark-secondary-text);
+        font-size: 1.2em;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition: color var(--transition-speed);
+      }
+
+      body.light-mode .skill-category ul li::before {
+        color: var(--light-secondary-text);
+      }
+
+      /* Contact Section */
+      .contact-info p {
+        margin-bottom: 10px;
+        display: flex; /* Align icon and text */
+        align-items: center;
+      }
+      .contact-info p i {
+        margin-right: 10px;
+        color: var(--dark-accent-glow);
+        font-size: 1.2em;
+        text-shadow: 0 0 5px var(--dark-accent-glow);
+        transition: color var(--transition-speed),
+          text-shadow var(--transition-speed), transform 0.2s ease; /* Added transform */
+      }
+      body.light-mode .contact-info p i {
+        color: var(--light-accent-glow);
+        text-shadow: var(
+          --light-glow-strength
+        ); /* Apply pink glow in light mode */
+      }
+      .contact-info p i:hover {
+        transform: translateY(-3px) scale(1.02); /* Small upward and enlarge on hover */
+        text-shadow: var(
+          --glow-strength-hover
+        ); /* More intense glow on hover */
+      }
+      body.light-mode .contact-info p i:hover {
+        text-shadow: var(
+          --light-glow-strength-hover
+        ); /* Stronger pink glow for light mode hover */
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 20px;
+        margin-top: 30px;
+        font-size: 0.9em;
+        color: var(--dark-secondary-text);
+        border-top: 1px solid var(--dark-border);
+        transition: color var(--transition-speed),
+          border-top-color var(--transition-speed);
+      }
+
+      body.light-mode footer {
+        color: var(--light-secondary-text);
+        border-top-color: var(--light-border);
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes neonGlow {
+        from {
+          text-shadow: 0 0 10px var(--dark-accent-glow),
+            0 0 20px var(--dark-accent-glow), 0 0 30px var(--dark-accent-glow);
+        }
+        to {
+          text-shadow: 0 0 5px var(--dark-accent-glow),
+            0 0 10px var(--dark-accent-glow), 0 0 15px var(--dark-accent-glow);
+        }
+      }
+
+      @keyframes slideInFromLeft {
+        from {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      /* Responsive Design */
       @media (max-width: 768px) {
-        .sidebar {
-          width: 100%;
-          height: auto;
-          position: relative;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Lighter shadow */
-          padding: 1rem;
-          flex-direction: row;
-          justify-content: center;
-          flex-wrap: wrap;
-        }
-
-        .sidebar-nav {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          width: 100%;
-        }
-
-        .sidebar-nav a {
-          margin: 0.25rem;
-          padding: 0.5rem 0.75rem;
-        }
-
-        .main-content {
-          margin-left: 0;
-          width: 100%;
-          padding-top: 1rem; /* Adjust for new sidebar position */
-        }
-
-        section {
-          padding: 2rem 1rem;
+        .hero-section {
+          height: 350px; /* Adjusted height for tablets, slightly longer */
         }
 
         .hero-section h1 {
-          font-size: 2.5rem;
+          font-size: 2.5em; /* Adjusted font size for tablets */
         }
 
-        .hero-section p {
-          font-size: 1.2rem;
+        .hero-section .one-liner {
+          font-size: 1em; /* Adjusted font size for tablets */
         }
 
-        .hero-icons a {
-          font-size: 1.5rem;
-          margin: 0 0.8rem;
+        .module {
+          padding: 20px;
         }
 
+        .module h2 {
+          font-size: 1.8em;
+        }
+
+        .skills-container {
+          grid-template-columns: 1fr; /* Stack skill categories on smaller screens */
+        }
         .hero-buttons {
-          flex-direction: column;
-          gap: 1rem;
+          flex-direction: column; /* Stack buttons vertically on small screens */
+          gap: 10px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-section {
+          height: 400px; /* Further adjusted height for mobile, making it longer */
+        }
+        /* Adjust tronGridScroll animation for mobile to cover the new height */
+        @keyframes tronGridScroll {
+          from {
+            background-position-y: 0;
+          }
+          to {
+            background-position-y: 400px;
+          }
+        }
+
+        .hero-section h1 {
+          font-size: 2em; /* Further adjusted font size for mobile */
+        }
+
+        .hero-section .one-liner {
+          font-size: 0.9em; /* Further adjusted font size for mobile */
+        }
+
+        .container {
+          padding: 0 15px;
+        }
+
+        .module {
+          padding: 15px;
+        }
+
+        .module h2 {
+          font-size: 1.5em;
         }
       }
     </style>
   </head>
-  <body>
-    <!-- Sidebar Navigation -->
-    <aside class="sidebar">
-      <div class="mb-8 text-center w-full">
-        <!-- Name and title removed from sidebar as they are now in hero section -->
-      </div>
-      <nav class="sidebar-nav w-full">
-        <a href="#home" class="click-effect">Home</a>
-        <a href="#about" class="click-effect">About Me</a>
-        <a href="#experience" class="click-effect">Experience</a>
-        <a href="#education" class="click-effect">Education</a>
-        <a href="#skills" class="click-effect">Skills</a>
-        <a href="#contact" class="click-effect">Contact</a>
-      </nav>
-    </aside>
-
-    <!-- Main Content Area -->
-    <main class="main-content">
-      <!-- Hero Section - Inspired by the screenshot -->
-      <section id="home" class="hero-section">
-        <h1 class="font-bold glowing-name">Adrien Darren Alassoo</h1>
-        <p class="font-semibold">
+  <body class="dark-mode">
+    <header class="hero-section">
+      <div class="hero-content">
+        <h1>Adrien Darren Alassoo</h1>
+        <p class="one-liner">
           Enraptured about the ever-evolving world of technology. Always
-          learning and looking for new challenges.
+          learning and ready for new challenges.
         </p>
-
-        <div class="hero-icons mb-6">
-          <a
-            href="mailto:darrenalassoo@gmail.com"
-            target="_blank"
-            aria-label="Email"
-            ><i class="fas fa-envelope"></i
-          ></a>
-          <a href="tel:+23057583702" aria-label="Phone"
-            ><i class="fas fa-phone-alt"></i
-          ></a>
-          <a
-            href="https://linkedin.com/in/Adrien-Alassoo"
-            target="_blank"
-            aria-label="LinkedIn"
-            ><i class="fab fa-linkedin"></i
-          ></a>
-          <a
-            href="https://github.com/Adrien-7"
-            target="_blank"
-            aria-label="GitHub"
-            ><i class="fab fa-github"></i
-          ></a>
-        </div>
-
         <div class="hero-buttons">
-          <a href="#contact" class="btn click-effect">Contact Me</a>
-          <!-- Placeholder for CV Download - Replace with actual CV link -->
+          <!-- Download CV Button -->
           <a
             href="CV-AdrienAlassoo.pdf"
-            download="CV-AdrienAlassoo.pdf"
-            class="btn click-effect"
+            download="Adrien_Alassoo_CV.pdf"
+            class="theme-toggle-button"
             >Download CV</a
           >
+          <!-- Theme Toggle Button -->
+          <button id="theme-toggle" class="theme-toggle-button">
+            Toggle Theme
+          </button>
+          <!-- Contact Button -->
+          <a href="#contact" class="theme-toggle-button">Contact</a>
         </div>
-      </section>
+      </div>
+    </header>
 
-      <!-- About Me Section -->
-      <section id="about">
-        <h2 class="text-4xl font-bold mb-6">About Me</h2>
-        <p class="text-lg leading-relaxed">
-          I am a passionate and dedicated individual, always eager to explore
-          the ever-evolving world of technology. My journey in IT is driven by a
-          constant desire to learn new skills and tackle challenging problems. I
-          am committed to delivering high-quality solutions and continuously
-          improving my expertise in software development.
+    <main class="container">
+      <section id="about" class="about-section module">
+        <h2>About Me</h2>
+        <p>
+          I am a Junior Software Developer at Providus Technologies Ltd, where I
+          work on diverse projects and continuously learn industry tools. I have
+          experience with full-stack development, adapting to new development
+          methodologies, and contributing to internal systems like a
+          company-wide leave management system and a QA team dashboard. These
+          applications were built using Java SpringBoot for the backend,
+          PostgreSQL for databases, and ReactJS or NextJS for the frontend, and
+          deployed on GCP using CloudRun and Kubernetes.
         </p>
-        <div class="mt-8 flex flex-wrap gap-4 text-gray-700">
-          <p>
-            <i
-              class="fas fa-map-marker-alt mr-2"
-              style="color: var(--icon-color)"
-            ></i>
-            Beau-Bassin, Mauritius
-          </p>
-          <p>
-            <a
-              href="http://adrien.it.com"
-              target="_blank"
-              class="hover:underline"
-              ><i
-                class="fas fa-globe mr-2"
-                style="color: var(--icon-color)"
-              ></i>
-              Website</a
-            >
-          </p>
-        </div>
+        <p>
+          During my internship at Leal Communications and Informatics (LCI) Ltd,
+          I assisted in developing web solutions using Java SpringBoot,
+          PostgreSQL, and PrimeFaces Framework. I also helped maintain existing
+          projects, focusing on refining and refactoring code according to
+          SpringBoot design principles. My internship also involved creating
+          User Manuals and performing various types of testing, including
+          whitebox, blackbox, edge case, and smoke testing.
+        </p>
+        <p>
+          I hold a BSc (Hons) Business Information System from the University of
+          Technology, Mauritius, where I graduated with Second Class, First
+          Division with honours.
+        </p>
       </section>
 
-      <!-- Professional Experience Section -->
-      <section id="experience">
-        <h2 class="text-4xl font-bold mb-8">Professional Experience</h2>
-
-        <!-- Junior Software Developer -->
-        <div
-          class="bg-white p-6 rounded-xl shadow-md mb-6 hover-effect click-effect"
-        >
-          <h3 class="text-2xl font-semibold">Junior Software Developer</h3>
-          <p class="text-lg text-gray-700">
-            Providus Technologies Ltd |
-            <span class="font-medium">Nov 2024 - Present</span>
-          </p>
-          <ul class="list-disc list-inside mt-4 space-y-2 text-gray-700">
+      <section id="experience" class="experience-section module">
+        <h2>Professional Experience</h2>
+        <div class="job-entry">
+          <h3>
+            Junior Software Developer
+            <span class="company-name">Providus Technologies Ltd</span>
+          </h3>
+          <p class="job-duration">November 2024 - Present</p>
+          <ul>
             <li>
-              Worked on multiple projects, adapting to diverse development
-              methodologies.
+              Working on multiple projects, alongside learning tools of the
+              trade.
             </li>
             <li>
-              Developed a company-wide leave management system with JAVA
-              SpringBoot backend, RESTful APIs, PostgreSQL, and ReactJS
-              frontend.
+              Adapted to their ways of development, joining teams on internal
+              projects such as a leave management system.
             </li>
             <li>
-              Participated in the development of a QA dashboard using JAVA
-              SpringBoot, PostgreSQL, and Next.js.
+              System was used company-wide, built on a JAVA SpringBoot back-end,
+              utilising RESTful APIs, a PostgreSQL database and a Reactjs
+              front-end.
             </li>
             <li>
-              Deployed applications on GCP using CloudRun and Kubernetes
+              Participated in the development of a dashboard for their QA teams
+              to track milestones.
+            </li>
+            <li>
+              Dashboard built on a JAVA SpringBoot back-end, a PostgreSQL
+              database and utilising Nextjs as the front-end.
+            </li>
+            <li>
+              Both apps were deployed on GCP using their CloudRun and Kubernetes
               clusters.
             </li>
           </ul>
         </div>
-
-        <!-- Software Development Intern -->
-        <div
-          class="bg-white p-6 rounded-xl shadow-md hover-effect click-effect"
-        >
-          <h3 class="text-2xl font-semibold">Software Development Intern</h3>
-          <p class="text-lg text-gray-700">
-            Leal Communications and Informatics (LCI) Ltd |
-            <span class="font-medium">Aug 2023 - Oct 2023</span>
-          </p>
-          <ul class="list-disc list-inside mt-4 space-y-2 text-gray-700">
+        <div class="job-entry">
+          <h3>
+            Software Development Intern
+            <span class="company-name"
+              >Leal Communications and Informatics (LCI) Ltd</span
+            >
+          </h3>
+          <p class="job-duration">August 2023 - October 2023</p>
+          <ul>
             <li>
-              Assisted in developing web solutions for a full-stack app (JAVA
-              SpringBoot backend, PostgreSQL, PrimeFaces Framework).
+              Assisted in the development of Web Solutions for a full stack app,
+              built on a JAVA SpringBoot back-end, a PostgreSQL database, and
+              the PrimeFaces Framework.
             </li>
             <li>
-              Maintained previous projects, refining and refactoring code
-              following SpringBoot design principles.
+              Assisted in the maintenance of previous projects as part of my
+              internship, learning how to refine and refactor code, following
+              design and development principles of SpringBoot.
             </li>
             <li>
-              Created User Manuals and performed web application testing
-              (whitebox, blackbox, edge case, smoke testing).
+              Created User Manuals, and testing Web Applications following QA
+              principles such as whitebox, blackbox, edge case, and smoke
+              testing.
             </li>
           </ul>
         </div>
       </section>
 
-      <!-- Education Section -->
-      <section id="education">
-        <h2 class="text-4xl font-bold mb-8">Education</h2>
-
-        <div
-          class="bg-white p-6 rounded-xl shadow-md mb-6 hover-effect click-effect"
-        >
-          <h3 class="text-2xl font-semibold">
-            BSc (Hons) Business Information System
-          </h3>
-          <p class="text-lg text-gray-700">
-            University of Technology, Mauritius |
-            <span class="font-medium">Oct 2021 - Oct 2024</span>
-          </p>
-          <p class="text-gray-600 mt-2">
-            Second Class, First Division with honours.
-          </p>
-        </div>
-
-        <div
-          class="bg-white p-6 rounded-xl shadow-md hover-effect click-effect"
-        >
-          <h3 class="text-2xl font-semibold">John Kennedy College</h3>
-          <p class="text-lg text-gray-700">
-            <span class="font-medium">2014 - 2021</span>
-          </p>
-          <p class="text-gray-600 mt-2">Pass at both SC and HSC level.</p>
-        </div>
-      </section>
-
-      <!-- Skills Section -->
-      <section id="skills">
-        <h2 class="text-4xl font-bold mb-8">Skills</h2>
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
-        >
-          <!-- Programming Languages -->
-          <div
-            class="bg-white p-5 rounded-xl shadow-md hover-effect click-effect"
-          >
-            <h3 class="text-xl font-semibold mb-3">Programming Languages</h3>
-            <ul class="list-disc list-inside space-y-1 text-gray-700">
+      <section id="skills" class="skills-section module">
+        <h2>Skills</h2>
+        <div class="skills-container">
+          <div class="skill-category">
+            <h3>Programming Languages</h3>
+            <ul>
               <li>JAVA</li>
               <li>Reactjs</li>
               <li>JAVASCRIPT</li>
@@ -613,14 +800,9 @@
               <li>CSS</li>
             </ul>
           </div>
-          <!-- Frameworks & Technologies -->
-          <div
-            class="bg-white p-5 rounded-xl shadow-md hover-effect click-effect"
-          >
-            <h3 class="text-xl font-semibold mb-3">
-              Frameworks & Technologies
-            </h3>
-            <ul class="list-disc list-inside space-y-1 text-gray-700">
+          <div class="skill-category">
+            <h3>Frameworks & Technologies</h3>
+            <ul>
               <li>SpringBoot</li>
               <li>NextJs</li>
               <li>RESTful APIs</li>
@@ -628,22 +810,16 @@
               <li>Google Cloud Platforms</li>
             </ul>
           </div>
-          <!-- Databases -->
-          <div
-            class="bg-white p-5 rounded-xl shadow-md hover-effect click-effect"
-          >
-            <h3 class="text-xl font-semibold mb-3">Databases</h3>
-            <ul class="list-disc list-inside space-y-1 text-gray-700">
+          <div class="skill-category">
+            <h3>Databases</h3>
+            <ul>
               <li>PostgreSQL</li>
               <li>MySQL</li>
             </ul>
           </div>
-          <!-- Methodologies & Tools -->
-          <div
-            class="bg-white p-5 rounded-xl shadow-md hover-effect click-effect"
-          >
-            <h3 class="text-xl font-semibold mb-3">Methodologies & Tools</h3>
-            <ul class="list-disc list-inside space-y-1 text-gray-700">
+          <div class="skill-category">
+            <h3>Methodologies & Tools</h3>
+            <ul>
               <li>Object Oriented Programming</li>
               <li>Code Review</li>
               <li>Coding Standards</li>
@@ -653,12 +829,9 @@
               <li>Software documentation</li>
             </ul>
           </div>
-          <!-- Office & Other -->
-          <div
-            class="bg-white p-5 rounded-xl shadow-md hover-effect click-effect"
-          >
-            <h3 class="text-xl font-semibold mb-3">Other Skills</h3>
-            <ul class="list-disc list-inside space-y-1 text-gray-700">
+          <div class="skill-category">
+            <h3>Other Skills</h3>
+            <ul>
               <li>Google Suite</li>
               <li>Microsoft Office suite</li>
             </ul>
@@ -666,160 +839,85 @@
         </div>
       </section>
 
-      <!-- Contact Section -->
-      <section id="contact">
-        <h2 class="text-4xl font-bold mb-8">Contact Me</h2>
-        <p class="text-lg leading-relaxed mb-6">
-          Feel free to reach out if you have any questions, opportunities, or
-          just want to connect!
-        </p>
-        <div class="flex flex-col space-y-4">
-          <p class="text-xl">
-            <i
-              class="fas fa-envelope mr-3"
-              style="color: var(--icon-color)"
-            ></i>
-            <a href="mailto:darrenalassoo@gmail.com" class="hover:underline"
-              >darrenalassoo@gmail</a
-            >
+      <section id="contact" class="contact-section module">
+        <h2>Get in Touch</h2>
+        <div class="contact-info">
+          <p>
+            <i class="fas fa-envelope"></i> <strong>Email:</strong>
+            <a href="mailto:darrenalassoo@gmail.com">darrenalassoo@gmail.com</a>
           </p>
-          <p class="text-xl">
-            <i
-              class="fas fa-phone-alt mr-3"
-              style="color: var(--icon-color)"
-            ></i>
-            +(230) 57583702
+          <p>
+            <i class="fas fa-phone"></i> <strong>Phone:</strong> +(230) 57583702
           </p>
-          <p class="text-xl">
-            <i
-              class="fab fa-linkedin mr-3"
-              style="color: var(--icon-color)"
-            ></i>
-            <a
-              href="https://linkedin.com/in/Adrien-Alassoo"
-              target="_blank"
-              class="hover:underline"
+          <p>
+            <i class="fas fa-map-marker-alt"></i>
+            <strong>Location:</strong> Beau-Bassin, Mauritius
+          </p>
+          <p>
+            <i class="fab fa-linkedin"></i> <strong>LinkedIn:</strong>
+            <a href="https://linkedin.com/in/Adrien-Alassoo" target="_blank"
               >linkedin.com/in/Adrien-Alassoo</a
             >
           </p>
-          <p class="text-xl">
-            <i class="fab fa-github mr-3" style="color: var(--icon-color)"></i>
-            <a
-              href="https://github.com/Adrien-7"
-              target="_blank"
-              class="hover:underline"
+          <p>
+            <i class="fab fa-github"></i> <strong>GitHub:</strong>
+            <a href="https://github.com/Adrien-7" target="_blank"
               >github.com/Adrien-7</a
             >
           </p>
-          <p class="text-xl">
-            <i class="fas fa-globe mr-3" style="color: var(--icon-color)"></i>
-            <a
-              href="http://adrien.it.com"
-              target="_blank"
-              class="hover:underline"
-              >adrien.it.com</a
-            >
+          <p>
+            <i class="fas fa-globe"></i> <strong>Portfolio:</strong>
+            <a href="https://adrien.it.com" target="_blank">adrien.it.com</a>
           </p>
         </div>
       </section>
     </main>
 
+    <footer>
+      <p>
+        &copy; <span id="current-year"></span> Adrien Alassoo. All rights
+        reserved.
+      </p>
+    </footer>
+
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const sidebarLinks = document.querySelectorAll(".sidebar-nav a");
-        const sections = document.querySelectorAll("section");
+        const themeToggle = document.getElementById("theme-toggle");
+        const body = document.body;
+        const currentYearSpan = document.getElementById("current-year");
 
-        // Smooth scrolling for sidebar links
-        sidebarLinks.forEach((link) => {
-          link.addEventListener("click", function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute("href").substring(1);
-            const targetSection = document.getElementById(targetId);
-            if (targetSection) {
-              window.scrollTo({
-                top: targetSection.offsetTop - 20, // Adjust for a little padding
-                behavior: "smooth",
-              });
-            }
-          });
-        });
+        // Set current year in the footer
+        currentYearSpan.textContent = new Date().getFullYear();
 
-        // Intersection Observer for active sidebar link
-        const observerOptions = {
-          root: null,
-          rootMargin: "0px",
-          threshold: 0.5, // Highlight when 50% of the section is visible
-        };
+        // Check for saved theme preference or default to dark mode
+        const currentTheme = localStorage.getItem("theme");
+        if (currentTheme) {
+          body.classList.add(currentTheme);
+        } else {
+          body.classList.add("dark-mode"); // Default to dark mode
+        }
 
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            const id = entry.target.id;
-            const correspondingLink = document.querySelector(
-              `.sidebar-nav a[href="#${id}"]`
-            );
-
-            if (correspondingLink) {
-              if (entry.isIntersecting) {
-                sidebarLinks.forEach((link) => link.classList.remove("active"));
-                correspondingLink.classList.add("active");
-              } else {
-                // Optional: Remove active class when section is out of view
-                // correspondingLink.classList.remove('active');
-              }
-            }
-          });
-        }, observerOptions);
-
-        sections.forEach((section) => {
-          observer.observe(section);
-        });
-
-        // Initial check for active section on page load
-        const initialCheck = () => {
-          let activeSectionFound = false;
-          for (let i = sections.length - 1; i >= 0; i--) {
-            const section = sections[i];
-            const rect = section.getBoundingClientRect();
-            // Check if the section is at least partially in view
-            if (
-              rect.top <= window.innerHeight / 2 &&
-              rect.bottom >= window.innerHeight / 2
-            ) {
-              sidebarLinks.forEach((link) => link.classList.remove("active"));
-              const correspondingLink = document.querySelector(
-                `.sidebar-nav a[href="#${section.id}"]`
-              );
-              if (correspondingLink) {
-                correspondingLink.classList.add("active");
-                activeSectionFound = true;
-                break;
-              }
-            }
-          }
-          // If no section is in view (e.g., at the very top before scrolling), activate the first link
-          if (!activeSectionFound && sections.length > 0) {
-            const firstLink = document.querySelector(
-              `.sidebar-nav a[href="#${sections[0].id}"]`
-            );
-            if (firstLink) {
-              firstLink.classList.add("active");
-            }
+        // Update button text on load
+        const updateButtonText = () => {
+          if (body.classList.contains("light-mode")) {
+            themeToggle.textContent = "Switch to Dark Mode";
+          } else {
+            themeToggle.textContent = "Switch to Light Mode";
           }
         };
+        updateButtonText(); // Call on initial load
 
-        // Run initial check and on scroll
-        initialCheck();
-        window.addEventListener("scroll", initialCheck);
-        window.addEventListener("resize", initialCheck); // Also check on resize
-
-        // Apply click effect
-        document.querySelectorAll(".click-effect").forEach((element) => {
-          element.addEventListener("click", function () {
-            this.classList.add("clicked");
-            setTimeout(() => {
-              this.classList.remove("clicked");
-            }, 200); // Remove class after 200ms
-          });
+        themeToggle.addEventListener("click", () => {
+          if (body.classList.contains("dark-mode")) {
+            body.classList.remove("dark-mode");
+            body.classList.add("light-mode");
+            localStorage.setItem("theme", "light-mode");
+          } else {
+            body.classList.remove("light-mode");
+            body.classList.add("dark-mode");
+            localStorage.setItem("theme", "dark-mode");
+          }
+          updateButtonText(); // Update text after toggle
         });
       });
     </script>
